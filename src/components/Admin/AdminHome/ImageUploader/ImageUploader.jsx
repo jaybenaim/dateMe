@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useFirestore, useFirestoreConnect } from "react-redux-firebase";
 import { Button } from "react-bootstrap";
 import { storage } from "../../../../config/firebase";
-import axios from "axios";
 const FirebaseImageUpload = () => {
-  const firestore = useFirestore();
-
   const { uid } = useSelector((state) => state.firebase.auth);
   const [imageAsFile, setImageAsFile] = useState("");
   const allInputs = { imgUrl: "" };
@@ -85,8 +81,6 @@ const FirebaseImageUpload = () => {
   }, []);
 
   const imageElements = () =>
-    imageUrls &&
-    imageUrls.length >= 1 &&
     imageUrls.map((url, i) => {
       console.log(url);
       return (
@@ -98,6 +92,8 @@ const FirebaseImageUpload = () => {
     <div>
       <form>
         <input type="file" onChange={onChange} />
+        <div>Preview</div>
+        <img src={imageAsUrl} alt="" />
         <Button variant="outline-secondary" onClick={handleFireBaseUpload}>
           Add an Image
         </Button>

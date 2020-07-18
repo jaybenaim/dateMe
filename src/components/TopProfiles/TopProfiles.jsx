@@ -1,10 +1,9 @@
 import React from "react";
-import { useFirestore, useFirestoreConnect } from "react-redux-firebase";
+import { useFirestoreConnect } from "react-redux-firebase";
 import { useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
 
 const TopProfiles = () => {
-  //   const firestore = useFirestore();
   const users = useSelector((state) => state.firestore.data.users);
   useFirestoreConnect({
     collection: "users",
@@ -45,6 +44,7 @@ const TopProfiles = () => {
 };
 
 export default TopProfiles;
+//   const firestore = useFirestore();
 
 // const addProfile = (profile) => {
 //     if (!profile) {
