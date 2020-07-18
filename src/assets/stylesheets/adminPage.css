@@ -1,0 +1,24 @@
+.admin-page {
+  display: grid;
+  grid-template-columns: 4fr 7fr;
+}
+.left-panel {
+  grid-column: 1;
+  padding: 10% 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.left-panel img {
+  height: 200px;
+  width: 200px;
+  border: none;
+  border-radius: 50%;
+}
+.left-panel .display-name {
+  padding-top: 20%;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 600;
+}

@@ -18,6 +18,8 @@ import firebase from "firebase/app";
 const rrfConfig = {
   userProfile: "users",
   useFirestoreForProfile: true,
+  presence: "presence", // where list of online users is stored in database
+  sessions: "sessions",
 };
 const rrfProps = {
   firebase,
