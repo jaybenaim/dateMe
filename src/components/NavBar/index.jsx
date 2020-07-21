@@ -39,9 +39,15 @@ const NavBar = () => {
           </Link>
           {isLoggedIn ? (
             <>
-              <Button variant={"outline-secondary"}>Account</Button>
+              <Link to="/admin" className="nav-item nav-link ">
+                Account
+              </Link>
 
-              <Button variant={"outline-secondary"} onClick={() => signOut()}>
+              <Button
+                className="nav-item nav-link "
+                variant={"outline-secondary"}
+                onClick={() => signOut()}
+              >
                 Logout
               </Button>
             </>

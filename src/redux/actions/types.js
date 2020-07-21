@@ -1,2 +1,3 @@
 export const GET_ERRORS = "GET_ERRORS";
-export const SAMPLE_TYPE = "SAMPLE_TYPE";
+export const GET_IMAGES = "GET_IMAGES";
+export const SET_IMAGES = "SET_IMAGES";

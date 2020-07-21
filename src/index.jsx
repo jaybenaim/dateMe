@@ -15,6 +15,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./config/firebase";
 import firebase from "firebase/app";
 
+import { cloudinaryConfig } from "./config/cloudinary";
+import cloudinary from "cloudinary";
+
+// cloudinary image hosting
+cloudinary.config(cloudinaryConfig);
+
+// react-redux-firebase config
 const rrfConfig = {
   userProfile: "users",
   useFirestoreForProfile: true,
