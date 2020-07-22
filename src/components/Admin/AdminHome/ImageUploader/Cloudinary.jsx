@@ -11,9 +11,13 @@ const Cloudinary = () => {
   const databaseRef = firebase.database().ref();
 
   const userImagesRef = databaseRef.child("users").child(uid).child("images");
+  const timestamp = new Date();
 
   const addImage = (url) => {
-    return userImagesRef.push(url, (res) => console.log(res));
+    return userImagesRef.push({
+      url,
+      timestamp: timestamp.toDateString(),
+    });
   };
 
   const uploadWidget = () => {

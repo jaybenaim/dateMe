@@ -20,7 +20,7 @@ const AdminGallery = (props) => {
     return (
       images &&
       Object.keys(images).map((key, i) => {
-        let url = images[key];
+        let { url } = images[key];
         return (
           <a href={url} target="_blank" key={i} rel="noopener noreferrer">
             <img src={url} alt={"insert alt"} />
