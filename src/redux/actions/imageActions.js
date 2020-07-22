@@ -1,6 +1,7 @@
 import { GET_IMAGES, SET_IMAGES, GET_ERRORS } from "./types";
 import { storage } from "../../config/firebase";
-import cloudinary from "cloudinary";
+import { cloudinaryConfig } from "../../config/cloudinary";
+import axios from "axios";
 
 // export const getImages = (uid) => (dispatch) => {
 //   const listRef = storage.ref().child(`users/${uid}`);
@@ -26,6 +27,7 @@ import cloudinary from "cloudinary";
 //     });
 //   });
 // };
+export const addimage = (image) => (dispatch) => {};
 export const getImages = (uid) => (dispatch) => {};
 export const setImages = (data) => {
   return {
