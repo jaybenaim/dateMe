@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import Cloudinary from "./Cloudinary";
 import { useFirebaseConnect } from "react-redux-firebase";
 
-const FirebaseImageUpload = (props) => {
+import "../../../assets/stylesheets/adminGallery.css";
+
+const AdminGallery = (props) => {
   const { uid } = useSelector((state) => state.firebase.auth);
 
   // get user images store to redux
@@ -21,24 +22,15 @@ const FirebaseImageUpload = (props) => {
       Object.keys(images).map((key, i) => {
         let url = images[key];
         return (
-          <img
-            key={i}
-            src={url}
-            alt={"insert alt"}
-            height="40px"
-            width="40px"
-          />
+          <a href={url} target="_blank" key={i} rel="noopener noreferrer">
+            <img src={url} alt={"insert alt"} />
+          </a>
         );
       })
     );
   };
 
-  return (
-    <div>
-      <div className="">{imageElements()}</div>
-      <Cloudinary />
-    </div>
-  );
+  return <div className="user-image-gallery">{imageElements()}</div>;
 };
 
-export default FirebaseImageUpload;
+export default AdminGallery;

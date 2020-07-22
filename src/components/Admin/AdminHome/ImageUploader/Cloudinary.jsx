@@ -31,7 +31,6 @@ const Cloudinary = () => {
   };
   return (
     <div className="main">
-      <h1>Galleria</h1>
       <div className="upload">
         <button onClick={uploadWidget.bind(this)} className="upload-button">
           Add Image

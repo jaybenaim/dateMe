@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "../../../assets/stylesheets/adminPage.css";
-import ImageUploader from "./ImageUploader/ImageUploader";
+import AdminGallery from "./AdminGallery";
+import Cloudinary from "./ImageUploader/Cloudinary";
 
 const AdminHome = () => {
   const { displayName, avatarUrl, email } = useSelector(
@@ -14,9 +15,11 @@ const AdminHome = () => {
         <img src={avatarUrl} alt={displayName} />
         <div className="display-name">{displayName}</div>
         <div className="email">{email}</div>
+        <Cloudinary />
       </section>
+
       <section className="main-content">
-        <ImageUploader />
+        <AdminGallery />
       </section>
     </div>
   );
