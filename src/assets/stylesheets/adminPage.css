@@ -29,3 +29,13 @@
     padding: 4%;
   }
 }
+.upload-button {
+  padding: 1% 2%;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  background: #0e82f9;
+  border: 2px solid #78c3ef;
+  border-radius: 40px;
+  color: #fff;
+}

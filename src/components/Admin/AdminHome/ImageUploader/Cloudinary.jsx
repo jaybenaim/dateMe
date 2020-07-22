@@ -24,8 +24,12 @@ const Cloudinary = () => {
         upload_preset: cloudinaryConfig.uploadPreset,
         tags: ["dating"],
       },
-      function (error, result) {
-        addImage(result[0].secure_url);
+      function (err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          addImage(result[0].secure_url);
+        }
       }
     );
   };
