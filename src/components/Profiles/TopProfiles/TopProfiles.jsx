@@ -13,25 +13,24 @@ const TopProfiles = () => {
   //   Get the top requested profiles
   // TODO: add sorting algorithm to get most matched with
   const topProfiles = () => {
-    let topProfileElements = [];
-    for (let user in users) {
-      topProfileElements.push(users[user]);
-    }
-    return topProfileElements.map((profile, i) => {
-      let { displayName, email, avatarUrl } = profile;
+    return (
+      users &&
+      Object.keys(users).map((userId, i) => {
+        let { displayName, email, avatarUrl } = users[userId];
 
-      return (
-        <div key={i}>
-          <img
-            src={avatarUrl}
-            alt={displayName}
-            height={"100px"}
-            width={"100px"}
-          />
-          {displayName} - {email}
-        </div>
-      );
-    });
+        return (
+          <div key={i}>
+            <img
+              src={avatarUrl}
+              alt={displayName}
+              height={"100px"}
+              width={"100px"}
+            />
+            {displayName} - {email}
+          </div>
+        );
+      })
+    );
   };
 
   return (

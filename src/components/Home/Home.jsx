@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import TopProfiles from "../TopProfiles/TopProfiles";
+import TopProfiles from "../Profiles/TopProfiles/TopProfiles";
 
 const Home = () => {
   return (

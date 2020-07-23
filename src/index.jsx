@@ -15,17 +15,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./config/firebase";
 import firebase from "firebase/app";
 
-// import cloudinaryConfig from "./config/cloudinary";
-// import cloudinary from "cloudinary";
-
-// cloudinary image hosting
-// console.log(process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
-// cloudinary.config({
-//   cloud_name: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME,
-//   api_key: process.env.REACT_APP_CLOUDINARY_KEY,
-//   api_secret: process.env.REACT_APP_CLOUDINARY_SECRET,
-// });
-
 // react-redux-firebase config
 const rrfConfig = {
   userProfile: "users",
