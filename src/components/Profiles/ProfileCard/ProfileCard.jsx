@@ -1,20 +1,18 @@
 import React from "react";
 
-const ProfileCard = ({
-  src,
-  alt,
-  height = "100px",
-  width = "100px",
-  email,
-  displayName,
-  styleClass,
-}) => {
+import "../../../assets/stylesheets/profileCard.css";
+
+const ProfileCard = ({ src, alt, email, displayName, styleClass }) => {
   return (
-    <div>
-      <img src={src} alt={alt} height={height} width={width} />
-      <div className={styleClass}>
-        {displayName && displayName.length >= 1 ? displayName : email}
-      </div>
+    <div className={styleClass}>
+      {!src ? (
+        <a href="https://placeholder.com/">
+          <img src="https://via.placeholder.com/400.png?text=Date+Me" />
+        </a>
+      ) : (
+        <img src={src} alt={alt} />
+      )}
+      <div>{displayName && displayName.length >= 1 ? displayName : email}</div>
     </div>
   );
 };

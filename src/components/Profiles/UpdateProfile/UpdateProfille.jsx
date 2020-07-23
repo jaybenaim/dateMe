@@ -15,13 +15,7 @@ const UpdateProfile = () => {
     let profileToUpdate = profile;
     profileToUpdate.avatarUrl = url;
 
-    firestore
-      .collection(`users`)
-      .doc(uid)
-      .update(profileToUpdate)
-      .then((docRef) => {
-        console.log(docRef);
-      });
+    firestore.collection(`users`).doc(uid).update(profileToUpdate);
   };
 
   return (

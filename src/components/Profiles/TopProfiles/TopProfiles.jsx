@@ -1,7 +1,6 @@
 import React from "react";
 import { useFirestoreConnect } from "react-redux-firebase";
 import { useSelector } from "react-redux";
-import { Button } from "react-bootstrap";
 import ProfileCard from "../ProfileCard/ProfileCard";
 
 const TopProfiles = () => {

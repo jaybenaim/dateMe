@@ -28,17 +28,22 @@ const ImageUploader = ({ handleClick, styleClass, btnText }) => {
       </Tooltip>
     );
   };
+
   return (
     <div className="main">
       <div className="upload">
         <Button onClick={uploadWidget.bind(this)} className={styleClass}>
-          <OverlayTrigger
-            placement="bottom"
-            delay={{ show: 50, hide: 300 }}
-            overlay={renderTooltip}
-          >
-            <div className="">{btnText}</div>
-          </OverlayTrigger>
+          {styleClass === "upload-button" ? (
+            <OverlayTrigger
+              placement="bottom"
+              delay={{ show: 50, hide: 300 }}
+              overlay={renderTooltip}
+            >
+              <div className="">{btnText}</div>
+            </OverlayTrigger>
+          ) : (
+            { btnText }
+          )}
         </Button>
       </div>
     </div>

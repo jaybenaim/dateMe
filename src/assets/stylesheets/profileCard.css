@@ -1,0 +1,10 @@
+@media (max-width: 480px) {
+  .top-profiles-card img {
+    max-width: 100%;
+    height: 400px !important;
+  }
+}
+@media (min-width: 789px) {
+}
+@media (min-width: 989px) {
+}
