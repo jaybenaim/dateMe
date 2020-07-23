@@ -35,10 +35,11 @@ const AdminHome = () => {
 
       <section className="main-content">
         <AdminGallery />
+
         <ImageUploader
           handleClick={addImage}
           styleClass={"upload-button"}
-          btnText={"Add Image"}
+          btnText={<i class="fa fa-plus" aria-hidden="true"></i>}
         />
       </section>
     </div>

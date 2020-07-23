@@ -23,20 +23,28 @@
   font-size: 2em;
   font-weight: 600;
 }
-@media (max-width: 480px) {
-  .admin-page {
-    grid-template-columns: 1fr;
-    padding: 4%;
-  }
-}
+
 /* override react-bootstrap */
 .upload-button {
   padding: 1% 2% 1.2% 2% !important;
   position: fixed !important;
   bottom: 5% !important;
-  right: 5% !important;
+  right: 3% !important;
   background: #0e82f9 !important;
   border: 2px solid #78c3ef !important;
-  border-radius: 40px !important;
+  border-radius: 50% !important;
   color: #fff !important;
+  height: 2em;
+  width: 2em;
+  font-size: 2em !important;
+}
+.upload-button:hover {
+  background: rgba(14, 130, 249, 0.85) !important;
+  border: 2px solid #0e82f9 !important;
+}
+@media (max-width: 480px) {
+  .admin-page {
+    grid-template-columns: 1fr;
+    padding: 4%;
+  }
 }

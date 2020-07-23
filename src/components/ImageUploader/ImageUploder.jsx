@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { cloudinaryConfig } from "../../config/cloudinary";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 const ImageUploader = ({ handleClick, styleClass, btnText }) => {
   const uploadWidget = () => {
@@ -20,11 +21,24 @@ const ImageUploader = ({ handleClick, styleClass, btnText }) => {
       }
     );
   };
+  const renderTooltip = (props) => {
+    return (
+      <Tooltip id="add-image-tooltip" {...props}>
+        Add Image
+      </Tooltip>
+    );
+  };
   return (
     <div className="main">
       <div className="upload">
         <Button onClick={uploadWidget.bind(this)} className={styleClass}>
-          {btnText}
+          <OverlayTrigger
+            placement="bottom"
+            delay={{ show: 50, hide: 300 }}
+            overlay={renderTooltip}
+          >
+            <div className="">{btnText}</div>
+          </OverlayTrigger>
         </Button>
       </div>
     </div>
