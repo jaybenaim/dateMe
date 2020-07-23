@@ -47,7 +47,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://jaybenaim.github.io/react-starter-tempalate/",
+  "homepage": "https://jaybenaim.github.io/react-starter-template/",
   "browserslist": [
     ">0.2%",
     "not dead",
