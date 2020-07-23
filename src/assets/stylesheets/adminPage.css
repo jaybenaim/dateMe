@@ -18,7 +18,7 @@
   border-radius: 50%;
 }
 .left-panel .display-name {
-  padding-top: 20%;
+  padding-top: 10%;
   text-align: center;
   font-size: 2em;
   font-weight: 600;
@@ -38,13 +38,25 @@
   width: 2em;
   font-size: 2em !important;
 }
-.upload-button:hover {
+.change-profile-image-btn {
+  background: #0e82f9 !important;
+  border: 2px solid #78c3ef !important;
+}
+.upload-button:hover,
+.change-profile-image-btn:hover {
   background: rgba(14, 130, 249, 0.85) !important;
   border: 2px solid #0e82f9 !important;
 }
+
 @media (max-width: 480px) {
   .admin-page {
     grid-template-columns: 1fr;
     padding: 4%;
+  }
+  .left-panel .display-name {
+    padding-top: 10%;
+    text-align: center;
+    font-size: 3em;
+    font-weight: 600;
   }
 }

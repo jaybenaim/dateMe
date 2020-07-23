@@ -25,13 +25,11 @@ const UpdateProfile = () => {
   };
 
   return (
-    <div className="">
-      <ImageUploader
-        handleClick={updateProfile}
-        styleClass={"none"}
-        btnText={"Update Profile Photo"}
-      />
-    </div>
+    <ImageUploader
+      handleClick={updateProfile}
+      styleClass={"change-profile-image-btn"}
+      btnText={"Change Profile Photo"}
+    />
   );
 };
 

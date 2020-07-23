@@ -2,6 +2,7 @@ import React from "react";
 import { useFirestoreConnect } from "react-redux-firebase";
 import { useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
+import ProfileCard from "../ProfileCard/ProfileCard";
 
 const TopProfiles = () => {
   const users = useSelector((state) => state.firestore.data.users);
@@ -19,15 +20,13 @@ const TopProfiles = () => {
         let { displayName, email, avatarUrl } = users[userId];
 
         return (
-          <div key={i}>
-            <img
-              src={avatarUrl}
-              alt={displayName}
-              height={"100px"}
-              width={"100px"}
-            />
-            {displayName} - {email}
-          </div>
+          <ProfileCard
+            displayName={displayName}
+            email={email}
+            src={avatarUrl}
+            alt={displayName}
+            styleClass={"profile-card top-profiles-card"}
+          />
         );
       })
     );
@@ -35,26 +34,9 @@ const TopProfiles = () => {
 
   return (
     <div className="" style={{ textAlign: "center" }}>
-      Top Profiles
-      <Button>Add Profile</Button>
       {topProfiles()}
     </div>
   );
 };
 
 export default TopProfiles;
-//   const firestore = useFirestore();
-
-// const addProfile = (profile) => {
-//     if (!profile) {
-//         profile = { name: "john" };
-//     }
-//     firestore
-//         .collection("profiles")
-//         .add(profile)
-//         .then((docRef) => {
-//             docRef.update({
-//                 profileId: docRef.id,
-//             });
-//         });
-// };

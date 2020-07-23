@@ -28,9 +28,12 @@ const AdminHome = () => {
     <div className="admin-page">
       <section className="left-panel">
         <img src={avatarUrl} alt={displayName} />
+        <div style={{ marginTop: "40px" }}>
+          <UpdateProfile />
+        </div>
+
         <div className="display-name">{displayName}</div>
         <div className="email">{email}</div>
-        <UpdateProfile />
       </section>
 
       <section className="main-content">
