@@ -42,7 +42,7 @@ const ImageUploader = ({ handleClick, styleClass, btnText }) => {
               <div className="">{btnText}</div>
             </OverlayTrigger>
           ) : (
-            { btnText }
+            <div>{btnText}</div>
           )}
         </Button>
       </div>
