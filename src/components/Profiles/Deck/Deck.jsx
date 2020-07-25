@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Swipeable, direction } from "react-deck-swiper";
 import DeckCard from "./DeckCard";
@@ -6,7 +6,7 @@ import INITIAL_CARDS_STATE from "./data";
 import CardButtons from "./CardButtons";
 import { useSelector } from "react-redux";
 import { useFirestoreConnect } from "react-redux-firebase";
-import { useEffect } from "react";
+import { Button } from "react-bootstrap";
 
 const Deck = () => {
   const [lastSwipeDirection, setLastSwipeDirection] = useState(null);
@@ -44,6 +44,9 @@ const Deck = () => {
   const renderButtons = ({ right, left }) => (
     <CardButtons right={right} left={left} />
   );
+  const refreshProfiles = () => {
+    setCards(userProfileImages);
+  };
   return (
     <div>
       {lastSwipeDirection ? (
@@ -52,9 +55,12 @@ const Deck = () => {
         <div> Try using the buttons below </div>
       )}
       {cards.length > 0 ? (
-        <Swipeable renderButtons={renderButtons} onSwipe={handleOnSwipe}>
-          <DeckCard item={cards[0]} />
-        </Swipeable>
+        <>
+          <Swipeable renderButtons={renderButtons} onSwipe={handleOnSwipe}>
+            <DeckCard item={cards[0]} />
+          </Swipeable>
+          <Button onClick={refreshProfiles}>Refresh</Button>
+        </>
       ) : (
         <div variant="body1">Looks like you have reached the end here =)</div>
       )}
