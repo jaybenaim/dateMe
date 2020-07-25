@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { Swipeable, direction } from "react-deck-swiper";
 import DeckCard from "./DeckCard";
@@ -7,6 +7,7 @@ import CardButtons from "./CardButtons";
 import { useSelector } from "react-redux";
 import { useFirestoreConnect } from "react-redux-firebase";
 import { Button } from "react-bootstrap";
+import "./deck.css";
 
 const Deck = () => {
   const [lastSwipeDirection, setLastSwipeDirection] = useState(null);
@@ -32,12 +33,12 @@ const Deck = () => {
   const handleOnSwipe = (swipeDirection) => {
     if (swipeDirection === direction.RIGHT) {
       // handle right swipe
-      setLastSwipeDirection("your right");
+      setLastSwipeDirection("right");
     }
 
     if (swipeDirection === direction.LEFT) {
       // handle left swipe
-      setLastSwipeDirection("your left");
+      setLastSwipeDirection("left");
     }
     setCards((prev) => prev.slice(1));
   };
@@ -46,7 +47,25 @@ const Deck = () => {
   );
   const refreshProfiles = () => {
     setCards(userProfileImages);
+    setLastSwipeDirection(null);
   };
+
+  const [currentMousePosition, setCurrentMousePosition] = useState({
+    x: null,
+    y: null,
+  });
+  const [initialMousePos, setInitialMousePos] = useState({ x: null, y: null });
+
+  const updateMousePosition = (ev) => {
+    setCurrentMousePosition({ x: ev.clientX, y: ev.clientY });
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", updateMousePosition);
+
+    return () => window.removeEventListener("mousemove", updateMousePosition);
+  }, []);
+
   return (
     <div>
       {lastSwipeDirection ? (
@@ -56,13 +75,28 @@ const Deck = () => {
       )}
       {cards.length > 0 ? (
         <>
-          <Swipeable renderButtons={renderButtons} onSwipe={handleOnSwipe}>
-            <DeckCard item={cards[0]} />
-          </Swipeable>
+          {initialMousePos.x &&
+            (initialMousePos.x < currentMousePosition.x ? (
+              <div>Heart</div>
+            ) : (
+              initialMousePos.x > currentMousePosition.x && <div>X</div>
+            ))}
+          <div
+            className=""
+            onDragStart={() => setInitialMousePos(currentMousePosition)}
+          >
+            <Swipeable renderButtons={renderButtons} onSwipe={handleOnSwipe}>
+              <DeckCard item={cards[0]} />
+            </Swipeable>
+          </div>
+
           <Button onClick={refreshProfiles}>Refresh</Button>
         </>
       ) : (
-        <div variant="body1">Looks like you have reached the end here =)</div>
+        <div variant="body1">
+          Looks like you have reached the end here =)
+          <Button onClick={refreshProfiles}>Refresh</Button>
+        </div>
       )}
     </div>
   );

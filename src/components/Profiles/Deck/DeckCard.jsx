@@ -5,7 +5,7 @@ const DeckCard = ({
   item: { title, text, url = "https://via.placeholder.com/150" },
 }) => {
   return (
-    <div className="">
+    <div>
       <Card>
         <Card.Img variant="top" src={url} />
         <Card.Body>
