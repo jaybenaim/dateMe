@@ -40,6 +40,7 @@ const Deck = () => {
       // handle left swipe
       setLastSwipeDirection("left");
     }
+
     setCards((prev) => prev.slice(1));
   };
   const renderButtons = ({ right, left }) => (
@@ -51,8 +52,8 @@ const Deck = () => {
   };
 
   const [currentMousePosition, setCurrentMousePosition] = useState({
-    x: null,
-    y: null,
+    x: 50,
+    y: 50,
   });
   const [initialMousePos, setInitialMousePos] = useState({ x: null, y: null });
 
@@ -65,31 +66,58 @@ const Deck = () => {
 
     return () => window.removeEventListener("mousemove", updateMousePosition);
   }, []);
+  const [showIcon, toggleIcon] = useState(false);
+
+  const handleTouchStart = (firstTouchEvent) => {
+    const location = {
+      x: firstTouchEvent.clientX,
+      y: firstTouchEvent.clientY,
+    };
+    setCurrentMousePosition(location);
+    toggleIcon(true);
+  };
+  const handleTouchEnd = (firstTouchEvent) => {
+    const location = {
+      x: firstTouchEvent.clientX,
+      y: firstTouchEvent.clientY,
+    };
+    toggleIcon(true);
+
+    setTimeout(() => {
+      toggleIcon(false);
+    }, 500);
+    setCurrentMousePosition({ x: location.x, y: location.y });
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      // setCurrentMousePosition({ x: initialMousePos.x, y: initialMousePos.y });
+      toggleIcon(false);
+    }, 500);
+  }, [lastSwipeDirection]);
 
   return (
     <div>
-      {lastSwipeDirection ? (
-        <div> Swiped {lastSwipeDirection} </div>
-      ) : (
-        <div> Try using the buttons below </div>
-      )}
       {cards.length > 0 ? (
         <>
-          {initialMousePos.x &&
-            (initialMousePos.x < currentMousePosition.x ? (
-              <div>Heart</div>
-            ) : (
-              initialMousePos.x > currentMousePosition.x && <div>X</div>
-            ))}
+          {showIcon && initialMousePos.x < currentMousePosition.x && (
+            <div className="swipe-content swipe-like">Heart</div>
+          )}{" "}
+          {showIcon && initialMousePos.x > currentMousePosition.x && (
+            <div className="swipe-content swipe-dislike">X</div>
+          )}
           <div
             className=""
             onDragStart={() => setInitialMousePos(currentMousePosition)}
+            onDragEnd={(e) => handleTouchEnd(currentMousePosition)}
+            onTouchStart={(e) => handleTouchStart(e.touches[0])}
+            onTouchMove={(e) => handleTouchStart(e.touches[0])}
+            onTouchEnd={(e) => handleTouchEnd(e.changedTouches[0])}
           >
             <Swipeable renderButtons={renderButtons} onSwipe={handleOnSwipe}>
               <DeckCard item={cards[0]} />
             </Swipeable>
           </div>
-
           <Button onClick={refreshProfiles}>Refresh</Button>
         </>
       ) : (
