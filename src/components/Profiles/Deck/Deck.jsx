@@ -40,9 +40,9 @@ const Deck = () => {
       // handle left swipe
       setLastSwipeDirection("left");
     }
-
     setCards((prev) => prev.slice(1));
   };
+
   const renderButtons = ({ right, left }) => (
     <CardButtons right={right} left={left} />
   );
@@ -50,71 +50,36 @@ const Deck = () => {
     setCards(userProfileImages);
     setLastSwipeDirection(null);
   };
+  const [showIcon, setShowIcon] = useState(lastSwipeDirection);
 
-  const [currentMousePosition, setCurrentMousePosition] = useState({
-    x: 50,
-    y: 50,
-  });
-  const [initialMousePos, setInitialMousePos] = useState({ x: null, y: null });
-
-  const updateMousePosition = (ev) => {
-    setCurrentMousePosition({ x: ev.clientX, y: ev.clientY });
+  const handleAfterSwipe = () => {
+    if (lastSwipeDirection === "right") {
+      setShowIcon("right");
+    }
+    if (lastSwipeDirection === "left") {
+      setShowIcon("left");
+    }
   };
-
-  useEffect(() => {
-    window.addEventListener("mousemove", updateMousePosition);
-
-    return () => window.removeEventListener("mousemove", updateMousePosition);
-  }, []);
-  const [showIcon, toggleIcon] = useState(false);
-
-  const handleTouchStart = (firstTouchEvent) => {
-    const location = {
-      x: firstTouchEvent.clientX,
-      y: firstTouchEvent.clientY,
-    };
-    setCurrentMousePosition(location);
-    toggleIcon(true);
-  };
-  const handleTouchEnd = (firstTouchEvent) => {
-    const location = {
-      x: firstTouchEvent.clientX,
-      y: firstTouchEvent.clientY,
-    };
-    toggleIcon(true);
-
-    setTimeout(() => {
-      toggleIcon(false);
-    }, 500);
-    setCurrentMousePosition({ x: location.x, y: location.y });
-  };
-
   useEffect(() => {
     setTimeout(() => {
-      // setCurrentMousePosition({ x: initialMousePos.x, y: initialMousePos.y });
-      toggleIcon(false);
+      lastSwipeDirection && setLastSwipeDirection(null);
     }, 500);
   }, [lastSwipeDirection]);
 
   return (
     <div>
+      {lastSwipeDirection === "right" && <div>like</div>}
+      {lastSwipeDirection === "left" && <div>dislike</div>}
       {cards.length > 0 ? (
         <>
-          {showIcon && initialMousePos.x < currentMousePosition.x && (
-            <div className="swipe-content swipe-like">Heart</div>
-          )}{" "}
-          {showIcon && initialMousePos.x > currentMousePosition.x && (
-            <div className="swipe-content swipe-dislike">X</div>
-          )}
-          <div
-            className=""
-            onDragStart={() => setInitialMousePos(currentMousePosition)}
-            onDragEnd={(e) => handleTouchEnd(currentMousePosition)}
-            onTouchStart={(e) => handleTouchStart(e.touches[0])}
-            onTouchMove={(e) => handleTouchStart(e.touches[0])}
-            onTouchEnd={(e) => handleTouchEnd(e.changedTouches[0])}
-          >
-            <Swipeable renderButtons={renderButtons} onSwipe={handleOnSwipe}>
+          <div className="">
+            <Swipeable
+              renderButtons={renderButtons}
+              onSwipe={handleOnSwipe}
+              onAfterSwipe={handleAfterSwipe}
+              swipeThreshold={200}
+              fadeThreshold={60}
+            >
               <DeckCard item={cards[0]} />
             </Swipeable>
           </div>
