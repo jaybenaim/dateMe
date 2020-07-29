@@ -5,15 +5,13 @@ const DeckCard = ({
   item: { title, text, url = "https://via.placeholder.com/150" },
 }) => {
   return (
-    <div>
-      <Card>
-        <Card.Img variant="top" src={url} />
-        <Card.Body>
-          <Card.Title>{title}</Card.Title>
-          <Card.Text>{text}</Card.Text>
-        </Card.Body>
-      </Card>
-    </div>
+    <Card>
+      <Card.Img variant="top" src={url} alt={title} />
+      <Card.Body>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{text}</Card.Text>
+      </Card.Body>
+    </Card>
   );
 };
 

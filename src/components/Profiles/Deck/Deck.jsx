@@ -70,9 +70,10 @@ const Deck = () => {
     <div>
       {lastSwipeDirection === "right" && <div>like</div>}
       {lastSwipeDirection === "left" && <div>dislike</div>}
+
       {cards.length > 0 ? (
         <>
-          <div className="">
+          <div className="swipe-deck">
             <Swipeable
               renderButtons={renderButtons}
               onSwipe={handleOnSwipe}
@@ -83,7 +84,6 @@ const Deck = () => {
               <DeckCard item={cards[0]} />
             </Swipeable>
           </div>
-          <Button onClick={refreshProfiles}>Refresh</Button>
         </>
       ) : (
         <div variant="body1">
