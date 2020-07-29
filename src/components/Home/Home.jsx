@@ -1,5 +1,4 @@
 ﻿import React from "react";
-import TopProfiles from "../Profiles/TopProfiles/TopProfiles";
 import Deck from "../Profiles/Deck/Deck";
 
 const Home = () => {

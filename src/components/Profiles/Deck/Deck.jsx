@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Swipeable, direction } from "react-deck-swiper";
 import DeckCard from "./DeckCard";
@@ -28,6 +28,7 @@ const Deck = () => {
 
   useEffect(() => {
     setCards(userProfileImages);
+    // eslint-disable-next-line
   }, [users]);
 
   const handleOnSwipe = (swipeDirection) => {
@@ -50,16 +51,7 @@ const Deck = () => {
     setCards(userProfileImages);
     setLastSwipeDirection(null);
   };
-  const [showIcon, setShowIcon] = useState(lastSwipeDirection);
 
-  const handleAfterSwipe = () => {
-    if (lastSwipeDirection === "right") {
-      setShowIcon("right");
-    }
-    if (lastSwipeDirection === "left") {
-      setShowIcon("left");
-    }
-  };
   useEffect(() => {
     setTimeout(() => {
       lastSwipeDirection && setLastSwipeDirection(null);
@@ -77,7 +69,6 @@ const Deck = () => {
             <Swipeable
               renderButtons={renderButtons}
               onSwipe={handleOnSwipe}
-              onAfterSwipe={handleAfterSwipe}
               swipeThreshold={200}
               fadeThreshold={60}
             >
