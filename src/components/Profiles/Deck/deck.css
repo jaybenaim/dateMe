@@ -9,6 +9,17 @@
 .like-btn {
   grid-column: 3;
 }
+.swipe-icon {
+  width: 200px;
+  height: 200px;
+  font-size: 12em;
+  position: fixed;
+  top: 28%;
+  left: 25%;
+  z-index: 2;
+  color: red;
+  opacity: 0.6;
+}
 @media (max-width: 450px) {
   .swipe-card-buttons button {
     height: 73px;

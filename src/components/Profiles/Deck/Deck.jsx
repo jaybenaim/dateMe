@@ -7,6 +7,7 @@ import CardButtons from "./CardButtons";
 import { useSelector } from "react-redux";
 import { useFirestoreConnect } from "react-redux-firebase";
 import { Button } from "react-bootstrap";
+import brokenHeartIcon from "../../../assets/icons/broken-heart.png";
 import "./deck.css";
 
 const Deck = () => {
@@ -55,13 +56,17 @@ const Deck = () => {
   useEffect(() => {
     setTimeout(() => {
       lastSwipeDirection && setLastSwipeDirection(null);
-    }, 500);
+    }, 200);
   }, [lastSwipeDirection]);
 
   return (
     <div>
-      {lastSwipeDirection === "right" && <div>like</div>}
-      {lastSwipeDirection === "left" && <div>dislike</div>}
+      {lastSwipeDirection === "right" && (
+        <i className="fa fa-heart swipe-icon" />
+      )}
+      {lastSwipeDirection === "left" && (
+        <img src={brokenHeartIcon} alt="broken heart" className="swipe-icon" />
+      )}
 
       {cards.length > 0 ? (
         <>
