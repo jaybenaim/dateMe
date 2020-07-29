@@ -11,16 +11,19 @@ const CardButtons = ({ right, left }) => {
           heading="Having trouble?"
           small="Try our mobile version to get the full experience"
           body="Please use the buttons below."
+          style={{ margin: "0 auto", minWidth: "100%" }}
         ></Notifications>
       )}
       <div className="swipe-card-buttons">
-        <Button onClick={left} className="dislike-btn ">
-          {" "}
-          Dislike{" "}
+        <Button
+          onClick={left}
+          variant="outline-danger"
+          className="dislike-btn "
+        >
+          <i class="fa fa-thumbs-down"></i>
         </Button>
-        <Button onClick={right} className="like-btn">
-          {" "}
-          Like{" "}
+        <Button onClick={right} variant="outline-success" className="like-btn">
+          <i class="fa fa-thumbs-up"></i>
         </Button>
       </div>
     </div>
