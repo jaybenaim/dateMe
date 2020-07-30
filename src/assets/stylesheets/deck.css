@@ -21,11 +21,16 @@
   opacity: 0.6;
 }
 @media (max-width: 450px) {
+  .swipe-card-buttons {
+    padding: 0 8%;
+  }
   .swipe-card-buttons button {
     height: 73px;
     width: 88px;
-    font-size: 1.7em;
     border: none !important;
+  }
+  .swipe-card-buttons button .fa {
+    font-size: 4em !important;
   }
 }
 @media (min-width: 481px) {

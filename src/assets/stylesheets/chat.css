@@ -1,0 +1,31 @@
+.chat-btn {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  font-size: 2.8em;
+  color: #007bff;
+}
+/* Chat wrapper */
+.chat-wrapper {
+  position: fixed !important;
+  top: 60%;
+  right: 5%;
+  width: 90%;
+}
+.chat-body {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  min-width: 110%;
+  margin-left: -5%;
+}
+.chat-body .image {
+  grid-column: 1;
+  margin: 0 auto;
+}
+.chat-body .title {
+  grid-column: 2;
+  margin-bottom: 0;
+}
+.chat-body .preview-text {
+  grid-column: 2;
+}

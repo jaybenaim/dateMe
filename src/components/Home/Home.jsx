@@ -1,5 +1,6 @@
 ﻿import React from "react";
 import Deck from "../Profiles/Deck/Deck";
+import Chat from "../Chat/Chat";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
             <Deck />
           </div>
         </div>
+        <Chat />
       </div>
     </main>
   );

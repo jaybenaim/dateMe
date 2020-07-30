@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { useFirestoreConnect } from "react-redux-firebase";
 import { Button } from "react-bootstrap";
 import brokenHeartIcon from "../../../assets/icons/broken-heart.png";
-import "./deck.css";
+import "../../../assets/stylesheets/deck.css";
 
 const Deck = () => {
   const [lastSwipeDirection, setLastSwipeDirection] = useState(null);
