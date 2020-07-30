@@ -8,6 +8,7 @@ import PrivateRoute from "./components/Auth/PrivateRoute/PrivateRoute";
 import SignIn from "./components/Auth/SignIn/SignIn";
 import SignUp from "./components/Auth/SignUp/SignUp";
 import AdminHome from "./components/Admin/AdminHome/AdminHome";
+import Chat from "./components/Chat/Chat";
 
 //TODO Web Template Studio: Add routes for your new pages here.
 const App = () => {
@@ -18,6 +19,10 @@ const App = () => {
         <PrivateRoute exact path="/admin">
           <AdminHome />
         </PrivateRoute>
+        <PrivateRoute exact path="/chat">
+          <Chat />
+        </PrivateRoute>
+
         <Route path="/home" component={Home} />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />

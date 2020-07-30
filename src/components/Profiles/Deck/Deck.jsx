@@ -36,6 +36,9 @@ const Deck = () => {
     if (swipeDirection === direction.RIGHT) {
       // handle right swipe
       setLastSwipeDirection("right");
+
+      // save liked profile here to list of liked
+      // or notify user (add notifications)
     }
 
     if (swipeDirection === direction.LEFT) {
@@ -83,7 +86,7 @@ const Deck = () => {
         </>
       ) : (
         <div variant="body1">
-          Looks like you have reached the end here =)
+          No more matches at this time.
           <Button onClick={refreshProfiles}>Refresh</Button>
         </div>
       )}
