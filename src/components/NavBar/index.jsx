@@ -4,6 +4,7 @@ import { useFirebase } from "react-redux-firebase";
 import { useHistory, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
+import "../../assets/stylesheets/navbar.css";
 
 const NavBar = () => {
   const firebase = useFirebase();
@@ -29,9 +30,9 @@ const NavBar = () => {
       <div className={styles.skipLink}>
         <a href="#mainContent">Skip to Main Content</a>
       </div>
-      <nav className="navbar navbar-expand-sm navbar-light border-bottom justify-content-between">
+      <nav className="navbar navbar-expand-sm navbar-light border-bottom">
         <Link className="navbar-brand" to="/">
-          react_starter_template
+          Date Me
         </Link>
         <div className="navbar-nav">
           <Link className="nav-item nav-link active" to="/home">
@@ -45,7 +46,7 @@ const NavBar = () => {
 
               <Button
                 className="nav-item nav-link "
-                variant={"outline-secondary"}
+                variant={"none"}
                 onClick={() => signOut()}
               >
                 Logout

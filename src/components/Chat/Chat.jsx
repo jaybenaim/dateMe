@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
 import { RiMessage3Line } from "react-icons/ri";
 import "../../assets/stylesheets/chat.css";
@@ -17,7 +16,7 @@ const Chat = () => {
     <div>
       <RiMessage3Line className="chat-btn" onClick={handleOpenChat} />
       {/* display maximized chat */}
-      {!chatIsOpen && <ChatWrapper />}
+      {chatIsOpen && <ChatWrapper />}
     </div>
   );
 };
